@@ -61,6 +61,11 @@ router.post("/:cid/product/:pid", (req, res) => {
         cart.products[productIndex].quantity++
     }
 
+    // update entire array
+    let carts = cartsManager.getCartsFromFile()
+    let cartIndex = carts.findIndex(u => u.id == cid)
+    carts[cartIndex] = cart
+
     cartsManager.saveCartsToFile(cart)
 
     res.setHeader('Content-Type', 'application/json');
