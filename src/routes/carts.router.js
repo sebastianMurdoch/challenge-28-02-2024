@@ -66,7 +66,7 @@ router.post("/:cid/product/:pid", (req, res) => {
     let cartIndex = carts.findIndex(u => u.id == cid)
     carts[cartIndex] = cart
 
-    cartsManager.saveCartsToFile(cart)
+    cartsManager.saveCartsToFile(carts)
 
     res.setHeader('Content-Type', 'application/json');
     return res.status(200).json({ cart: cart });
